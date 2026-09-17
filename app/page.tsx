@@ -51,7 +51,7 @@ export default function Home() {
       {/* 1. Top Navbar */}
       <nav className="w-full max-w-7xl clay flex justify-between items-center px-6 py-4 mb-8 sticky top-4 z-50 backdrop-blur-md bg-white/90">
         <div className="flex items-center gap-3">
-          <img src="/logo.png" alt="شعار منظومة المدرسة" className="w-11 h-11 rounded-2xl object-contain bg-white shadow-sm p-0.5 border border-purple-100" />
+          <img src="/almadrasa-landing/logo.png" alt="شعار منظومة المدرسة" className="w-11 h-11 rounded-2xl object-contain bg-white shadow-sm p-0.5 border border-purple-100" />
           <div>
             <span className="text-xl font-black text-[#1e1640] block leading-tight">المدرسة</span>
             <span className="text-xs font-bold text-primary-600 tracking-wider">AL MADRASA ERP</span>
@@ -1045,7 +1045,7 @@ export default function Home() {
       <footer className="w-full mt-auto py-10 text-center border-t-2 border-[#ede9fe] text-[#6b5f8a] font-medium">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-[#1e1640] font-black text-lg">
-            <img src="/logo.png" alt="شعار منظومة المدرسة" className="w-8 h-8 rounded-xl object-contain bg-white p-0.5 border border-purple-100" />
+            <img src="/almadrasa-landing/logo.png" alt="شعار منظومة المدرسة" className="w-8 h-8 rounded-xl object-contain bg-white p-0.5 border border-purple-100" />
             <span>منصة المدرسة (Al Madrasa ERP)</span>
           </div>
 
