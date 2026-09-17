@@ -31,19 +31,27 @@ import {
   Phone, 
   ArrowLeft, 
   FolderArchive, 
-  Percent 
+  Percent,
+  Radio,
+  Sliders,
+  Gift,
+  AlertTriangle,
+  DoorOpen
 } from "lucide-react";
 
 export default function Home() {
+  const whatsappUrl = "https://wa.me/213655748513?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%B7%D9%84%D8%A8%20%D9%85%D9%86%D8%B8%D9%88%D9%85%D8%A9%20%D8%A7%D9%84%D9%85%D8%AF%D8%B1%D8%B3%D8%A9";
+  const telegramUrl = "https://t.me/Fluidev";
+  const phoneNumber = "0655 74 85 13";
+  const phoneInternational = "+213 655 74 85 13";
+
   return (
     <main className="flex min-h-screen flex-col items-center overflow-x-hidden p-4 md:p-8">
       
       {/* 1. Top Navbar */}
       <nav className="w-full max-w-7xl clay flex justify-between items-center px-6 py-4 mb-8 sticky top-4 z-50 backdrop-blur-md bg-white/90">
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-2xl bg-primary-100 text-primary-600 flex items-center justify-center shadow-inner">
-            <LayoutDashboard size={26} />
-          </div>
+          <img src="/logo.png" alt="شعار منظومة المدرسة" className="w-11 h-11 rounded-2xl object-contain bg-white shadow-sm p-0.5 border border-purple-100" />
           <div>
             <span className="text-xl font-black text-[#1e1640] block leading-tight">المدرسة</span>
             <span className="text-xs font-bold text-primary-600 tracking-wider">AL MADRASA ERP</span>
@@ -56,14 +64,19 @@ export default function Home() {
           <a href="#caisse" className="hover:text-primary-600 transition-colors">الصندوق POS</a>
           <a href="#academics" className="hover:text-primary-600 transition-colors">الأكاديميا والقرآن</a>
           <a href="#payroll" className="hover:text-primary-600 transition-colors">رواتب الأساتذة</a>
+          <a href="#network" className="hover:text-primary-600 transition-colors">الربط الشبكي</a>
           <a href="#pricing" className="hover:text-primary-600 transition-colors">الأسعار</a>
           <a href="#faq" className="hover:text-primary-600 transition-colors">الأسئلة الشائعة</a>
         </div>
 
         <div className="flex items-center gap-3">
-          <a href="#contact" className="btn-clay-primary px-6 py-2.5 text-sm flex items-center gap-2">
-            <Phone size={16} />
-            <span>طلب تجربة مجانية</span>
+          <a href={telegramUrl} target="_blank" rel="noopener noreferrer" className="btn-clay-secondary px-4 py-2.5 text-xs font-bold flex items-center gap-2">
+            <Send size={15} className="text-blue-500" />
+            <span className="hidden sm:inline">تيليجرام</span>
+          </a>
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-clay-primary px-5 py-2.5 text-sm flex items-center gap-2">
+            <MessageSquare size={16} />
+            <span>طلب تجربة</span>
           </a>
         </div>
       </nav>
@@ -81,16 +94,20 @@ export default function Home() {
         </h1>
 
         <p className="text-lg md:text-xl text-[#6b5f8a] max-w-3xl font-medium leading-relaxed">
-          نظام مكتبي متكامل (Desktop Offline + LAN) يجمع بين سرعة تسجيل الحضور بالبطاقات الذكية، والتحصيل المالي الدقيق بنقاط البيع، والطباعة الفورية للوصولات الحرارية، مع إشعارات واتساب وتيليجرام المباشرة لأولياء الأمور.
+          نظام مكتبي متكامل (Desktop Offline + LAN) يجمع بين سرعة تسجيل الحضور بالبطاقات الذكية، والتحصيل المالي الدقيق بنقاط البيع، والطباعة الفورية للوصولات الحرارية، مع ربط شبكي ذكي يكتشف الحواسيب تلقائياً دون إدخال IP يدوياً.
         </p>
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
-          <a href="#pricing" className="btn-clay-primary px-8 py-4 text-lg flex items-center justify-center gap-3">
-            <Zap size={20} />
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-clay-primary px-8 py-4 text-lg flex items-center justify-center gap-3">
+            <MessageSquare size={20} />
             <span>احصل على نسختك الدائمة</span>
           </a>
-          <a href="#features" className="btn-clay-secondary px-8 py-4 text-lg flex items-center justify-center gap-2">
+          <a href={telegramUrl} target="_blank" rel="noopener noreferrer" className="btn-clay-secondary px-8 py-4 text-lg flex items-center justify-center gap-2">
+            <Send size={18} className="text-blue-600" />
+            <span>تواصل عبر تيليجرام (@Fluidev)</span>
+          </a>
+          <a href="#features" className="btn-clay-secondary px-6 py-4 text-lg flex items-center justify-center gap-2">
             <span>اكتشف تفاصيل المنظومة</span>
             <ArrowLeft size={18} />
           </a>
@@ -103,8 +120,8 @@ export default function Home() {
             <span>يعمل 100% بدون إنترنت</span>
           </div>
           <div className="clay px-4 py-3 flex items-center justify-center gap-2.5 text-xs md:text-sm font-black text-[#1e1640]">
-            <Server size={18} className="text-blue-600" />
-            <span>ربط شبكي محلي (خادم + استقبال)</span>
+            <Radio size={18} className="text-blue-600" />
+            <span>ربط شبكي ذكي واكتشاف تلقائي</span>
           </div>
           <div className="clay px-4 py-3 flex items-center justify-center gap-2.5 text-xs md:text-sm font-black text-[#1e1640]">
             <Printer size={18} className="text-emerald-600" />
@@ -118,10 +135,10 @@ export default function Home() {
       </section>
 
       {/* 3. Four Core Pillars KPI Cards */}
-      <section id="features" className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      <section id="features" className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 scroll-mt-28">
         <div className="clay-purple p-6 flex flex-col justify-between h-44 text-[#3b0764]">
           <div className="flex justify-between items-start">
-            <span className="font-bold text-xs uppercase tracking-wider bg-white/40 px-2.5 py-1 rounded-lg">المالية والصندوق</span>
+            <span className="font-bold text-xs bg-white/40 px-2.5 py-1 rounded-lg">المالية والصندوق</span>
             <Receipt size={26} className="text-purple-900" />
           </div>
           <div>
@@ -132,7 +149,7 @@ export default function Home() {
 
         <div className="clay-yellow p-6 flex flex-col justify-between h-44 text-[#78350f]">
           <div className="flex justify-between items-start">
-            <span className="font-bold text-xs uppercase tracking-wider bg-white/40 px-2.5 py-1 rounded-lg">الاستقبال السريع</span>
+            <span className="font-bold text-xs bg-white/40 px-2.5 py-1 rounded-lg">الاستقبال السريع</span>
             <QrCode size={26} className="text-amber-900" />
           </div>
           <div>
@@ -143,7 +160,7 @@ export default function Home() {
 
         <div className="clay-green p-6 flex flex-col justify-between h-44 text-[#064e3b]">
           <div className="flex justify-between items-start">
-            <span className="font-bold text-xs uppercase tracking-wider bg-white/40 px-2.5 py-1 rounded-lg">التواصل الفوري</span>
+            <span className="font-bold text-xs bg-white/40 px-2.5 py-1 rounded-lg">التواصل الفوري</span>
             <MessageSquare size={26} className="text-emerald-900" />
           </div>
           <div>
@@ -154,7 +171,7 @@ export default function Home() {
 
         <div className="clay-blue p-6 flex flex-col justify-between h-44 text-[#1e3a8a]">
           <div className="flex justify-between items-start">
-            <span className="font-bold text-xs uppercase tracking-wider bg-white/40 px-2.5 py-1 rounded-lg">الأكاديميا ورواتب الأساتذة</span>
+            <span className="font-bold text-xs bg-white/40 px-2.5 py-1 rounded-lg">الأكاديميا ورواتب الأساتذة</span>
             <Calendar size={26} className="text-blue-900" />
           </div>
           <div>
@@ -165,7 +182,7 @@ export default function Home() {
       </section>
 
       {/* 4. Deep-Dive Section: Smart Reception & Pointage */}
-      <section id="reception" className="w-full max-w-7xl mt-24">
+      <section id="reception" className="w-full max-w-7xl mt-24 scroll-mt-28">
         <div className="clay p-8 md:p-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
             <div className="flex-1 space-y-6 text-right">
@@ -183,25 +200,33 @@ export default function Home() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="p-4 rounded-2xl bg-[#f8f6fc] border border-[#ede9fe]">
-                  <div className="w-8 h-8 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold mb-2">⚡</div>
+                  <div className="w-8 h-8 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold mb-2">
+                    <Zap size={18} />
+                  </div>
                   <h4 className="font-black text-[#1e1640] mb-1">بوانتاج فوري في أجزاء من الثانية</h4>
-                  <p className="text-xs text-[#6b5f8a] font-medium">عرض صورة التلميذ وحالته المالية (خالص أو مدين) بمجرد تمرير البطاقة.</p>
+                  <p className="text-xs text-[#6b5f8a] font-medium">عرض بيانات التلميذ التفصيلية، رمزه التعريفي، وحالته المالية (خالص أو مدين) فوراً.</p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#f8f6fc] border border-[#ede9fe]">
-                  <div className="w-8 h-8 rounded-xl bg-red-100 text-red-600 flex items-center justify-center font-bold mb-2">🚨</div>
+                  <div className="w-8 h-8 rounded-xl bg-red-100 text-red-600 flex items-center justify-center font-bold mb-2">
+                    <AlertTriangle size={18} />
+                  </div>
                   <h4 className="font-black text-[#1e1640] mb-1">كاشف التطفل والأفواج الخاطئة</h4>
-                  <p className="text-xs text-[#6b5f8a] font-medium">تنبيه صوتي ومرئي إذا مرر البطاقة تلميذ غير مبرمج في حصة تجري الآن.</p>
+                  <p className="text-xs text-[#6b5f8a] font-medium">كاشف بصري فوري للأفواج الخاطئة ينبه موظف الاستقبال فوراً في حال عدم برمجة التلميذ في الحصة الحالية.</p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#f8f6fc] border border-[#ede9fe]">
-                  <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold mb-2">👥</div>
+                  <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold mb-2">
+                    <Users size={18} />
+                  </div>
                   <h4 className="font-black text-[#1e1640] mb-1">رادار الحركة (Inside Now)</h4>
                   <p className="text-xs text-[#6b5f8a] font-medium">إحصاء دقيق للطلاب المتواجدين داخل المبنى حالياً ونسب الغياب اللحظية.</p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#f8f6fc] border border-[#ede9fe]">
-                  <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold mb-2">🚪</div>
+                  <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold mb-2">
+                    <DoorOpen size={18} />
+                  </div>
                   <h4 className="font-black text-[#1e1640] mb-1">إشغال القاعات وحضور الأساتذة</h4>
                   <p className="text-xs text-[#6b5f8a] font-medium">متابعة القاعات المشغولة وجدول حضور وتأخر الأساتذة المبرمجين اليوم.</p>
                 </div>
@@ -213,11 +238,11 @@ export default function Home() {
               <div className="clay-purple p-6 text-[#1e1640]">
                 <div className="bg-white rounded-2xl p-5 shadow-sm space-y-4">
                   <div className="flex items-center justify-between border-b pb-3 border-slate-100">
-                    <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                    <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md flex items-center gap-1.5">
+                      <Check size={14} className="text-emerald-600" />
                       تم تسجيل الدخول بنجاح
                     </span>
-                    <span className="text-xs font-bold text-slate-400">08:02:14</span>
+                    <span className="text-xs font-bold text-slate-500 font-mono">08:02:14</span>
                   </div>
 
                   <div className="flex items-center gap-4">
@@ -244,13 +269,22 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between font-medium">
                       <span className="text-slate-500">الوضعية المالية:</span>
-                      <span className="font-black text-emerald-600">خالص (0.00 د.ج ديون) ✓</span>
+                      <span className="font-black text-emerald-600 flex items-center gap-1">
+                        خالص (0.00 د.ج ديون)
+                        <Check size={14} />
+                      </span>
                     </div>
                   </div>
 
-                  <div className="pt-2 flex items-center justify-between text-xs text-slate-400 font-bold">
-                    <span>⚡ تم إشعار الولي عبر واتساب</span>
-                    <span>✓ تم الإرسال</span>
+                  <div className="pt-2 flex items-center justify-between text-xs text-slate-500 font-bold border-t border-slate-100">
+                    <span className="flex items-center gap-1.5 text-primary-700">
+                      <MessageSquare size={13} />
+                      تم إشعار الولي عبر واتساب
+                    </span>
+                    <span className="flex items-center gap-1 text-emerald-600">
+                      <Check size={14} />
+                      تم الإرسال
+                    </span>
                   </div>
                 </div>
               </div>
@@ -260,7 +294,7 @@ export default function Home() {
       </section>
 
       {/* 5. Deep-Dive Section: Caisse POS & Thermal Receipts */}
-      <section id="caisse" className="w-full max-w-7xl mt-24">
+      <section id="caisse" className="w-full max-w-7xl mt-24 scroll-mt-28">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* Caisse Left Card */}
@@ -275,12 +309,14 @@ export default function Home() {
                 <span className="text-primary-600">وجرد تلقائي يمنع أي عجز أو اختلاس</span>
               </h2>
               <p className="text-base md:text-lg text-[#6b5f8a] font-medium leading-relaxed">
-                تم بناء نظام الصندوق ليواكب حركة القبض السريعة في أوقات الذروة. كل دينار يدخل أو يخرج موثق في وردية محكمة باسم أمين الصندوق.
+                تم بناء نظام الصندوق ليواكب حركة القبض السريعة في أوقات الذروة. كل دينار يدخل أو يخرج موثق في وردية محكمة باسم أمين الصندوق، مع حاسبة ذكية للفكة وترجيع الصرف.
               </p>
 
               <div className="space-y-3 pt-2">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs mt-1">✓</div>
+                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs mt-1 shrink-0">
+                    <Check size={13} />
+                  </div>
                   <div>
                     <h5 className="font-black text-[#1e1640] text-sm">تسيير الورديات الصباحية والمسائية (Shifts)</h5>
                     <p className="text-xs text-[#6b5f8a] font-medium">تسجيل الرصيد الافتتاحي للدرج (Fond de Caisse) قبل بدء المعاملات.</p>
@@ -288,7 +324,9 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs mt-1">✓</div>
+                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs mt-1 shrink-0">
+                    <Check size={13} />
+                  </div>
                   <div>
                     <h5 className="font-black text-[#1e1640] text-sm">جرد الدرج الفعلي وحساب الفارق آلياً</h5>
                     <p className="text-xs text-[#6b5f8a] font-medium">عند إغلاق الوردية، يطابق النظام المبالغ المحسوبة مع النقد الفعلي ويكشف العجز أو الفائض فوراً.</p>
@@ -296,7 +334,19 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs mt-1">✓</div>
+                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs mt-1 shrink-0">
+                    <Check size={13} />
+                  </div>
+                  <div>
+                    <h5 className="font-black text-[#1e1640] text-sm">استرجاع الديون العالقة (الكريدي) وبراءة الذمة</h5>
+                    <p className="text-xs text-[#6b5f8a] font-medium">حصر دقيق للمتأخرات مع إرسال تذكيرات مخصصة للأولياء واستخراج وثيقة براءة الذمة المالية عند مغادرة التلميذ.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs mt-1 shrink-0">
+                    <Check size={13} />
+                  </div>
                   <div>
                     <h5 className="font-black text-[#1e1640] text-sm">تسجيل المصاريف السريعة اليومية (Dépenses)</h5>
                     <p className="text-xs text-[#6b5f8a] font-medium">إخراج مبالغ صغيرة لشراء أوراق الطباعة، الصيانة، أو مستلزمات النظافة مع توثيق السند.</p>
@@ -304,10 +354,12 @@ export default function Home() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs mt-1">✓</div>
+                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs mt-1 shrink-0">
+                    <Check size={13} />
+                  </div>
                   <div>
-                    <h5 className="font-black text-[#1e1640] text-sm">نافذة التسديد السريع (Fast Payment ⚡)</h5>
-                    <p className="text-xs text-[#6b5f8a] font-medium">سداد فوري للأقساط أو رسوم التسجيل والكتب مع حاسبة ذكية لمبالغ الترجيع (Rendu Monnaie).</p>
+                    <h5 className="font-black text-[#1e1640] text-sm">نافذة التسديد السريع (Fast Payment) ومحفظة الطالب</h5>
+                    <p className="text-xs text-[#6b5f8a] font-medium">سداد فوري للأقساط أو رسوم التسجيل والكتب مع حاسبة ذكية لمبالغ الترجيع (Rendu Monnaie) ومحفظة إلكترونية للرصيد المتبقي.</p>
                   </div>
                 </div>
               </div>
@@ -323,14 +375,14 @@ export default function Home() {
               </div>
               <h3 className="text-2xl font-black text-[#1e1640]">وصولات حرارية وبطاقات مدرسية</h3>
               <p className="text-sm text-[#6b5f8a] font-medium leading-relaxed">
-                متوافق مباشرة مع جميع طابعات الفواتير الحرارية في السوق الجزائري (مقاس 80mm و 58mm كـ Xprinter وغيرها) دون الحاجة لإعدادات معقدة.
+                متوافق مباشرة مع جميع طابعات الفواتير الحرارية في السوق الجزائري (مقاس 80mm و 58mm كـ Xprinter وغيرها) مع تنسيق حراري تلقائي فوري مخصص لكل مقاس بنقرة واحدة.
               </p>
 
               {/* Thermal Receipt Simulation */}
               <div className="bg-white border-2 border-dashed border-slate-300 rounded-xl p-4 text-center font-mono text-xs shadow-inner my-2">
                 <div className="border-b border-slate-200 pb-2 mb-2">
                   <p className="font-black text-sm text-[#1e1640]">مؤسسة النجاح التعليمية</p>
-                  <p className="text-[10px] text-slate-500">البليدة - هاتف: 0550.00.00.00</p>
+                  <p className="text-[10px] text-slate-500">البليدة - هاتف: {phoneNumber}</p>
                   <p className="text-[10px] font-bold text-slate-700 mt-1">وصل قبض مالي: REC-2026-0412</p>
                 </div>
                 <div className="text-right space-y-1 text-[11px] mb-2">
@@ -355,7 +407,7 @@ export default function Home() {
                     <span>نقداً (CASH)</span>
                   </div>
                 </div>
-                <div className="border-t border-slate-200 pt-2 flex items-center justify-between text-[10px] text-slate-400">
+                <div className="border-t border-slate-200 pt-2 flex items-center justify-between text-[10px] text-slate-500">
                   <span>كود التحقق: QR VALID</span>
                   <span>الطباعة: 80mm</span>
                 </div>
@@ -363,7 +415,10 @@ export default function Home() {
             </div>
 
             <div className="pt-4 border-t border-[#ede9fe] flex items-center justify-between text-xs font-bold text-primary-700">
-              <span>🪪 يدعم استخراج بطاقة الطالب بالباركود فوراً</span>
+              <span className="flex items-center gap-1.5">
+                <CreditCard size={15} />
+                يدعم استخراج بطاقة الطالب بالباركود فوراً
+              </span>
               <CheckCircle2 size={16} />
             </div>
           </div>
@@ -372,18 +427,18 @@ export default function Home() {
       </section>
 
       {/* 6. Academic & Quran Deep-Dive */}
-      <section id="academics" className="w-full max-w-7xl mt-24">
+      <section id="academics" className="w-full max-w-7xl mt-24 scroll-mt-28">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-black mb-3">
             <School size={16} />
             <span>الهيكلة البيداغوجية المتكاملة</span>
           </div>
-          <h2 className="text-3xl md:5xl font-black text-[#1e1640]">
+          <h2 className="text-3xl md:text-5xl font-black text-[#1e1640]">
             مدارس الدعم والمناهج الرسمية، <br />
             وحلقات التحفيظ القرآني 360°
           </h2>
           <p className="text-base md:text-lg text-[#6b5f8a] font-medium mt-3">
-            سواء كان مركزك مخصصاً لدروس الدعم لشهادة التعليم المتوسط BEM والباكالوريا BAC، أو مدرسة قرآنية متخصصة، المنظومة تلبي كافة التفاصيل الدقيقة.
+            سواء كان مركزك مخصصاً لدروس الدعم لشهادة التعليم المتوسط BEM والباكالوريا BAC، أو مدرسة قرآنية متخصصة ومخيمات موسمية، المنظومة تلبي كافة المتطلبات.
           </p>
         </div>
 
@@ -400,16 +455,16 @@ export default function Home() {
               </p>
               <ul className="space-y-2 text-xs font-bold text-[#1e1640]">
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span> تحديد السعات ومنع اكتظاظ القاعات.
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> تحديد السعات ومنع اكتظاظ القاعات.
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span> قوائم الانتظار الذكية (Waiting List) للترقية الفورية.
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> قوائم الانتظار الذكية (Waiting List) للترقية الفورية.
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span> نقل الفوج (Transfer) مع تعويض فروقات الأسعار.
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> نقل الفوج (Transfer) مع تعويض فروقات الأسعار.
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-600">•</span> إلغاء التسجيل واسترجاع المال لمحفظة التلميذ أو نقداً.
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600"></span> إلغاء التسجيل الآمن واسترجاع المال لمحفظة التلميذ أو نقداً.
                 </li>
               </ul>
             </div>
@@ -421,22 +476,22 @@ export default function Home() {
               <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold mb-6">
                 <BookOpen size={24} />
               </div>
-              <h3 className="text-xl font-black text-[#1e1640] mb-3">مسار التحفيظ القرآني 360°</h3>
+              <h3 className="text-xl font-black text-[#1e1640] mb-3">مسار التحفيظ القرآني والمشايخ</h3>
               <p className="text-sm text-[#6b5f8a] font-medium leading-relaxed mb-4">
-                دفتر متابعة إلكتروني شامل لكل طالب يغنيك عن السجلات الورقية التقليدية للكتاتيب والمدارس القرآنية.
+                دفتر متابعة إلكتروني شامل لكل طالب يغنيك عن السجلات الورقية، مع لوحة تحكم خاصة بالمشايخ والمقرئين.
               </p>
               <ul className="space-y-2 text-xs font-bold text-[#1e1640]">
                 <li className="flex items-center gap-2">
-                  <span className="text-emerald-600">•</span> تتبع الأحزاب الـ 60 كاملة، الأثمان، السور، والآيات.
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> تتبع الأحزاب الـ 60 كاملة، الأثمان، السور، والآيات.
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-emerald-600">•</span> اعتماد روايتي ورش عن نافع أو حفص عن عاصم.
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> اعتماد روايتي ورش عن نافع أو حفص عن عاصم.
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-emerald-600">•</span> تسجيل جلسات الحفظ الجديد والمراجعة والتثبيت.
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> تسجيل جلسات الحفظ الجديد والمراجعة والتثبيت.
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-emerald-600">•</span> تقييم درجات التجويد (ممتاز، جيد جداً...) وتوجيهات الشيخ.
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> تقييم درجات التجويد وتوجيهات الشيخ المباشرة.
                 </li>
               </ul>
             </div>
@@ -454,16 +509,16 @@ export default function Home() {
               </p>
               <ul className="space-y-2 text-xs font-bold text-[#1e1640]">
                 <li className="flex items-center gap-2">
-                  <span className="text-purple-600">•</span> تسجيل سريع لورشات العطل واستخراج شهادات المشاركة بكود تحقق.
+                  <span className="w-1.5 h-1.5 rounded-full bg-purple-600"></span> تسجيل سريع لورشات العطل واستخراج شهادات المشاركة بكود تحقق.
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-purple-600">•</span> مخطط أسبوعي بصري يمنع تضارب القاعات وأوقات الأساتذة.
+                  <span className="w-1.5 h-1.5 rounded-full bg-purple-600"></span> مخطط أسبوعي بصري يمنع تضارب القاعات وأوقات الأساتذة.
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-purple-600">•</span> مولد الجداول الذكي: إنشاء مئات الحصص لأشهر قادمة بنقرة زر.
+                  <span className="w-1.5 h-1.5 rounded-full bg-purple-600"></span> مولد الجداول الذكي: إنشاء مئات الحصص لأشهر قادمة بنقرة زر.
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-purple-600">•</span> تصدير وطباعة جداول التوقيت للتعليق في المركز.
+                  <span className="w-1.5 h-1.5 rounded-full bg-purple-600"></span> تصدير وطباعة جداول التوقيت للتعليق في المركز.
                 </li>
               </ul>
             </div>
@@ -472,7 +527,7 @@ export default function Home() {
       </section>
 
       {/* 7. Teacher Payroll & Financial Administration */}
-      <section id="payroll" className="w-full max-w-7xl mt-24">
+      <section id="payroll" className="w-full max-w-7xl mt-24 scroll-mt-28">
         <div className="clay p-8 md:p-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
             <div className="flex-1 space-y-6 text-right">
@@ -485,7 +540,7 @@ export default function Home() {
                 <span className="text-primary-600">نسبة مئوية، راتب شهري، وتوثيق CCP/RIP</span>
               </h2>
               <p className="text-base md:text-lg text-[#6b5f8a] font-medium leading-relaxed">
-                أكبر معضلة تواجه مراكز الدعم هي تعقيدات حساب عمولات الأساتذة وتتبع كم حصة قدم كل أستاذ وكم طالب حضر. نظام "المدرسة" يحسم هذه الحسابات فورياً بضغطة زر واحدة.
+                أكبر معضلة تواجه مراكز الدعم هي تعقيدات حساب عمولات الأساتذة وتتبع الحصص وعدد الطلاب الحاضرين. نظام "المدرسة" يحسم هذه الحسابات فورياً بضغطة زر واحدة.
               </p>
 
               <div className="space-y-3 pt-2">
@@ -568,7 +623,7 @@ export default function Home() {
       </section>
 
       {/* 8. WhatsApp & Telegram Automated Communications */}
-      <section id="whatsapp" className="w-full max-w-7xl mt-24">
+      <section id="whatsapp" className="w-full max-w-7xl mt-24 scroll-mt-28">
         <div className="clay p-8 md:p-12 flex flex-col lg:flex-row items-center gap-10">
           <div className="flex-1 space-y-6 text-right">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm font-black border border-emerald-200">
@@ -580,24 +635,32 @@ export default function Home() {
               <span className="text-emerald-600">ورسائل تلقائية تعزز هيبة واحترافية مركزك</span>
             </h2>
             <p className="text-base md:text-lg text-[#6b5f8a] font-medium leading-relaxed">
-              ولي الأمر في الجزائر يختار المركز الذي يضمن له أمان ابنه وتتبعه المستمر. نظام "المدرسة" يرسل رسائل مباشرة على هاتف الولي فوراً دون أي تدخل يدوي، مع طابور إرسال ذكي يضمن حماية أرقامكم من الحظر.
+              ولي الأمر في الجزائر يختار المركز الذي يضمن له أمان ابنه وتتبعه المستمر. نظام "المدرسة" يرسل رسائل مباشرة على هاتف الولي فوراً دون أي تدخل يدوي، مع طابور إرسال ذكي بفواصل زمنية عشوائية مدروسة (Anti-Spam Pacing) للحد الأقصى من مخاطر تقييد الحساب، مع خيار الربط المباشر أو عبر بوابات الـ Gateway.
             </p>
 
             <ul className="space-y-3 pt-2">
               <li className="flex items-center gap-3 text-[#1e1640] font-bold text-sm">
-                <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">✓</div>
+                <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Check size={14} />
+                </div>
                 <span>إشعار فوري بدخول التلميذ للمركز وقاعته لراحة بال الولي.</span>
               </li>
               <li className="flex items-center gap-3 text-[#1e1640] font-bold text-sm">
-                <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">✓</div>
+                <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Check size={14} />
+                </div>
                 <span>تنبيه آلي بالغياب أو التأخر في حال لم يلتحق التلميذ بحصته.</span>
               </li>
               <li className="flex items-center gap-3 text-[#1e1640] font-bold text-sm">
-                <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">✓</div>
+                <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Check size={14} />
+                </div>
                 <span>إرسال وصل الدفع الرقمي فور تسديد أي قسط في الصندوق.</span>
               </li>
               <li className="flex items-center gap-3 text-[#1e1640] font-bold text-sm">
-                <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">✓</div>
+                <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Check size={14} />
+                </div>
                 <span>إرسال جماعي (Broadcast) للإعلانات والعطل وبدء التسجيلات الجديدة.</span>
               </li>
             </ul>
@@ -607,8 +670,8 @@ export default function Home() {
             <div className="clay-green p-3 w-full max-w-sm transform lg:rotate-2 hover:rotate-0 transition-transform duration-300">
               <div className="bg-white rounded-[24px] overflow-hidden shadow-inner">
                 <div className="bg-[#075E54] text-white p-4 font-bold flex items-center gap-3">
-                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-lg">
-                    🏫
+                  <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white">
+                    <School size={20} />
                   </div>
                   <div>
                     <h5 className="text-sm font-black leading-tight">مؤسسة النجاح التعليمية</h5>
@@ -617,13 +680,17 @@ export default function Home() {
                 </div>
                 <div className="bg-[#E5DDD5] p-4 space-y-3 h-[340px] flex flex-col justify-end text-right">
                   <div className="bg-white p-3 rounded-2xl rounded-tr-none text-xs text-[#1e1640] font-medium shadow-sm leading-relaxed">
-                    👋 السلام عليكم ولي أمر التلميذ: <br />
+                    السلام عليكم ولي أمر التلميذ: <br />
                     نعلمكم بأنه تم تسجيل دخول ابنكم <b>(أحمد)</b> للمركز اليوم على الساعة <b>08:00 صباحاً</b> وهو متواجد الآن في قاعة الفيزياء.
-                    <span className="text-[9px] text-slate-400 block mt-1 text-left font-mono">08:00 ✓✓</span>
+                    <span className="text-[9px] text-slate-500 block mt-1 text-left font-mono flex items-center justify-end gap-1">
+                      08:00 <Check size={10} /><Check size={10} />
+                    </span>
                   </div>
                   <div className="bg-white p-3 rounded-2xl rounded-tr-none text-xs text-[#1e1640] font-medium shadow-sm leading-relaxed">
-                    🧾 تم تسجيل استلام مبلغ <b>2,000 د.ج</b> كاشتراك لشهر أكتوبر في فوج الرياضيات. نشكركم على حسن التعامل.
-                    <span className="text-[9px] text-slate-400 block mt-1 text-left font-mono">09:15 ✓✓</span>
+                    تم تسجيل استلام مبلغ <b>2,000 د.ج</b> كاشتراك لشهر أكتوبر في فوج الرياضيات. نشكركم على حسن التعامل.
+                    <span className="text-[9px] text-slate-500 block mt-1 text-left font-mono flex items-center justify-end gap-1">
+                      09:15 <Check size={10} /><Check size={10} />
+                    </span>
                   </div>
                 </div>
               </div>
@@ -657,39 +724,81 @@ export default function Home() {
               <tbody className="divide-y divide-[#ede9fe] text-xs md:text-sm font-medium text-[#1e1640]">
                 <tr>
                   <td className="py-4 px-4 font-bold">العمل بدون إنترنت (100% Offline)</td>
-                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">✓ فوري وبلا أي انقطاع</td>
+                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">
+                    <span className="flex items-center justify-center gap-1"><Check size={16} /> فوري وبلا أي انقطاع</span>
+                  </td>
                   <td className="py-4 px-4 text-center text-amber-600 font-bold">نعم (لكن بدون ربط)</td>
-                  <td className="py-4 px-4 text-center text-red-500 font-bold">✗ يتوقف تماماً عند انقطاع النت</td>
+                  <td className="py-4 px-4 text-center text-red-500 font-bold">
+                    <span className="flex items-center justify-center gap-1"><X size={16} /> يتوقف تماماً عند انقطاع النت</span>
+                  </td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 font-bold">سرعة الاستقبال بالباركود و RFID</td>
-                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">✓ أقل من ثانية واحدة</td>
-                  <td className="py-4 px-4 text-center text-red-500 font-bold">✗ كتابة يدوية وبطء شديد</td>
-                  <td className="py-4 px-4 text-center text-slate-400">✗ غير مدمجة محلياً</td>
+                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">
+                    <span className="flex items-center justify-center gap-1"><Check size={16} /> أقل من ثانية واحدة</span>
+                  </td>
+                  <td className="py-4 px-4 text-center text-red-500 font-bold">
+                    <span className="flex items-center justify-center gap-1"><X size={16} /> كتابة يدوية وبطء شديد</span>
+                  </td>
+                  <td className="py-4 px-4 text-center text-slate-400">
+                    <span className="flex items-center justify-center gap-1"><X size={16} /> غير مدمجة محلياً</span>
+                  </td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 font-bold">تسيير الصندوق، الورديات، وكشف الفوارق</td>
-                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">✓ جرد دقيق وحساب العجز آلياً</td>
-                  <td className="py-4 px-4 text-center text-red-500 font-bold">✗ احتمالية أخطاء واختلاسات</td>
-                  <td className="py-4 px-4 text-center text-slate-400">✗ محاسبة عامة غير مرنة</td>
+                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">
+                    <span className="flex items-center justify-center gap-1"><Check size={16} /> جرد دقيق وحساب العجز آلياً</span>
+                  </td>
+                  <td className="py-4 px-4 text-center text-red-500 font-bold">
+                    <span className="flex items-center justify-center gap-1"><X size={16} /> احتمالية أخطاء واختلاسات</span>
+                  </td>
+                  <td className="py-4 px-4 text-center text-slate-400">
+                    <span className="flex items-center justify-center gap-1"><X size={16} /> محاسبة عامة غير مرنة</span>
+                  </td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 font-bold">طباعة وصولات حرارية 80mm/58mm</td>
-                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">✓ بنقرة زر وبدون حوارات طباعة</td>
-                  <td className="py-4 px-4 text-center text-red-500 font-bold">✗ غير متوفرة إطلاقاً</td>
-                  <td className="py-4 px-4 text-center text-slate-400">✗ معقدة في المتصفح</td>
+                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">
+                    <span className="flex items-center justify-center gap-1"><Check size={16} /> تنسيق حراري تلقائي 80mm و 58mm</span>
+                  </td>
+                  <td className="py-4 px-4 text-center text-red-500 font-bold">
+                    <span className="flex items-center justify-center gap-1"><X size={16} /> غير متوفرة إطلاقاً</span>
+                  </td>
+                  <td className="py-4 px-4 text-center text-slate-400">
+                    <span className="flex items-center justify-center gap-1"><X size={16} /> معقدة في المتصفح</span>
+                  </td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 font-bold">إشعارات واتساب وتيليجرام المباشرة</td>
-                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">✓ آلية وطابور آمن ضد الحظر</td>
-                  <td className="py-4 px-4 text-center text-red-500 font-bold">✗ إرسال يدوي متعب جداً</td>
+                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">
+                    <span className="flex items-center justify-center gap-1"><Check size={16} /> طابور إرسال ذكي للحد من الحظر</span>
+                  </td>
+                  <td className="py-4 px-4 text-center text-red-500 font-bold">
+                    <span className="flex items-center justify-center gap-1"><X size={16} /> إرسال يدوي متعب جداً</span>
+                  </td>
                   <td className="py-4 px-4 text-center text-amber-600 font-bold">رسوم إضافية باهظة شهرياً</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 font-bold">حساب نسب الأساتذة وتسوية CCP/RIP</td>
-                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">✓ مخصص للواقع الجزائري</td>
-                  <td className="py-4 px-4 text-center text-red-500 font-bold">✗ معادلات معقدة وعرضة للتلف</td>
-                  <td className="py-4 px-4 text-center text-slate-400">✗ غير متوافقة مع الجزائر</td>
+                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">
+                    <span className="flex items-center justify-center gap-1"><Check size={16} /> مخصص للواقع الجزائري</span>
+                  </td>
+                  <td className="py-4 px-4 text-center text-red-500 font-bold">
+                    <span className="flex items-center justify-center gap-1"><X size={16} /> معادلات معقدة وعرضة للتلف</span>
+                  </td>
+                  <td className="py-4 px-4 text-center text-slate-400">
+                    <span className="flex items-center justify-center gap-1"><X size={16} /> غير متوافقة مع الجزائر</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold">الامتثال لقانون حماية البيانات (قانون 18-07)</td>
+                  <td className="py-4 px-4 text-center bg-primary-50/50 font-black text-emerald-600">
+                    <span className="flex items-center justify-center gap-1"><Check size={16} /> متوافق 100% (تخزين محلي بلا خوادم أجنبية)</span>
+                  </td>
+                  <td className="py-4 px-4 text-center text-amber-600 font-bold">معرض للضياع والسرقة</td>
+                  <td className="py-4 px-4 text-center text-red-500 font-bold">
+                    <span className="flex items-center justify-center gap-1"><X size={16} /> نقل بيانات القُصّر لخوادم سحابية خارجية</span>
+                  </td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 font-bold">رسوم الاشتراك</td>
@@ -703,37 +812,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. Local Network & Security */}
-      <section className="w-full max-w-7xl mt-24">
+      {/* 10. Local Network, Auto-Discovery & Customization */}
+      <section id="network" className="w-full max-w-7xl mt-24 scroll-mt-28">
         <div className="clay p-8 md:p-10 bg-gradient-to-r from-purple-50/70 via-white to-blue-50/70">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-black mb-3">
+              <Radio size={14} />
+              <span>تقنيات الشبكة والأمان الحديثة</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-black text-[#1e1640]">
+              ربط شبكي تلقائي، تخصيص كامل للواجهة، وحماية متقدمة
+            </h2>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-right">
-            <div className="space-y-3">
+            <div className="space-y-3 bg-white/70 p-5 rounded-2xl border border-purple-100 shadow-sm">
               <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold">
-                <Server size={22} />
+                <Radio size={22} />
               </div>
-              <h3 className="text-xl font-black text-[#1e1640]">ربط عدة حواسيب في الشبكة المحلية (LAN)</h3>
+              <h3 className="text-lg font-black text-[#1e1640]">اكتشاف شبكي تلقائي (Zero-Config LAN)</h3>
               <p className="text-xs md:text-sm text-[#6b5f8a] font-medium leading-relaxed">
-                يمكن تنصيب البرنامج كخادم رئيسي (Host) في مكتب المدير، وربط حواسيب أخرى في الاستقبال عبر شبكة المدرسة المحلية لمشاركة البيانات فوراً.
+                لا حاجة لمعرفة أو كتابة عنوان IP يدوياً. حاسوب الاستقبال يعثر تلقائياً على خادم المدير في شبكة المدرسة (عبر بث UDP وفحص الشبكة الذكي) ويرتبط به فورياً.
               </p>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-3 bg-white/70 p-5 rounded-2xl border border-purple-100 shadow-sm">
+              <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                <Sliders size={22} />
+              </div>
+              <h3 className="text-lg font-black text-[#1e1640]">تخصيص الشريط العلوي وواجهة العمل</h3>
+              <p className="text-xs md:text-sm text-[#6b5f8a] font-medium leading-relaxed">
+                حرية تامة في إظهار أو إخفاء عناصر الشريط العلوي: أزرار التسجيل السريع، نافذة الصندوق، محرك البحث، وتكبير الشاشة Zoom للشاشات المكتبية الكبيرة.
+              </p>
+            </div>
+
+            <div className="space-y-3 bg-white/70 p-5 rounded-2xl border border-purple-100 shadow-sm">
               <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
                 <FolderArchive size={22} />
               </div>
-              <h3 className="text-xl font-black text-[#1e1640]">نسخ احتياطي فوري واستعادة (.zip)</h3>
+              <h3 className="text-lg font-black text-[#1e1640]">نسخ احتياطي فوري وأمان SQLite WAL</h3>
               <p className="text-xs md:text-sm text-[#6b5f8a] font-medium leading-relaxed">
-                بضغطة زر واحدة، يتم توليد أرشيف مضغوط مشفر لكامل قاعدة البيانات، مع إمكانية تصديره لفلاش ديسك خارجي (USB) لحماية بياناتك من أي طارئ.
-              </p>
-            </div>
-
-            <div className="space-y-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
-                <Shield size={22} />
-              </div>
-              <h3 className="text-xl font-black text-[#1e1640]">صلاحيات مشددة (RBAC) وأمان SQLite WAL</h3>
-              <p className="text-xs md:text-sm text-[#6b5f8a] font-medium leading-relaxed">
-                موظف الاستقبال لا يرى أرباح المركز أو حسابات الأساتذة، مع معمارية متينة بقاعدة بيانات SQLite WAL تمنع تلف البيانات وتضمن سرعة القراءة والكتابة.
+                استخراج نسخة احتياطية كاملة لقاعدة البيانات (.db) بنقرة زر لحفظها على فلاش ديسك USB، مع معمارية SQLite WAL المقاومة تماماً لانقطاع الكهرباء وتلف البيانات.
               </p>
             </div>
           </div>
@@ -741,7 +860,7 @@ export default function Home() {
       </section>
 
       {/* 11. Pricing Section */}
-      <section id="pricing" className="w-full max-w-7xl mt-24 grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <section id="pricing" className="w-full max-w-7xl mt-24 grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 scroll-mt-28">
         <div className="clay p-8 md:p-10 flex flex-col items-center justify-center text-center relative overflow-hidden">
           <div className="absolute -right-10 -top-10 w-48 h-48 bg-[#fde68a] rounded-full blur-3xl opacity-50"></div>
           <div className="absolute -left-10 -bottom-10 w-48 h-48 bg-[#c4b5fd] rounded-full blur-3xl opacity-50"></div>
@@ -758,20 +877,27 @@ export default function Home() {
           
           <div className="clay-purple p-8 w-full z-10 text-[#1e1640]">
             <h3 className="text-2xl font-black mb-2">الحزمة الشاملة الاحترافية (Pro Lifetime)</h3>
-            <p className="text-xs font-bold text-purple-950/80 mb-6">تشمل كافة الوحدات: الاستقبال، الصندوق، الأكاديميا، القرآن، والرواتب</p>
+            <p className="text-xs font-bold text-purple-950/80 mb-6">ترخيص دائم وشامل يغطي جهازين بالشبكة المحلية (جهاز رئيسي للإدارة + جهاز فرعي للاستقبال) مع كافة الوحدات</p>
             
             <div className="text-5xl md:text-6xl font-black mb-2 flex items-baseline justify-center gap-2">
               8 <span className="text-2xl opacity-90">ملايين سنتيم</span>
             </div>
             <div className="text-base font-black opacity-80 mb-8 font-mono">(80,000 د.ج فقط)</div>
             
-            <a href="https://wa.me/213000000000" id="contact" target="_blank" className="btn-clay-primary w-full py-4 text-lg flex justify-center items-center gap-3">
-              <MessageSquare size={22} />
-              <span>اطلب المنظومة عبر الواتساب الآن</span>
-            </a>
+            <div className="flex flex-col gap-3">
+              <a href={whatsappUrl} id="contact" target="_blank" rel="noopener noreferrer" className="btn-clay-primary w-full py-4 text-base md:text-lg flex justify-center items-center gap-3">
+                <MessageSquare size={22} />
+                <span>اطلب المنظومة عبر الواتساب الآن</span>
+              </a>
+              <a href={telegramUrl} target="_blank" rel="noopener noreferrer" className="btn-clay-secondary w-full py-3 text-sm font-black flex justify-center items-center gap-2">
+                <Send size={18} className="text-blue-600" />
+                <span>أو تواصل عبر التيليجرام (@Fluidev)</span>
+              </a>
+            </div>
             
             <div className="text-xs font-black mt-6 bg-white/50 py-2.5 px-4 rounded-xl text-purple-950 flex items-center justify-center gap-2">
-              <span>🎁 يشمل التثبيت على أجهزتكم، الإعداد الأولي وتدريب موظفيكم مجاناً</span>
+              <Gift size={16} className="text-amber-600" />
+              <span>يشمل التثبيت عن بُعد عبر AnyDesk في كافة الـ 58 ولاية، الإعداد الأولي وتدريب موظفيكم مجاناً</span>
             </div>
           </div>
         </div>
@@ -786,18 +912,18 @@ export default function Home() {
                   <CheckCircle2 size={20} />
                 </div>
                 <div>
-                  <h4 className="font-black text-[#1e1640] text-sm">ترخيص غير محدود</h4>
-                  <p className="text-xs text-[#6b5f8a] font-medium">عدد لا نهائي من الطلاب، الأفواج، الأساتذة، وحركات الصندوق دون قيود.</p>
+                  <h4 className="font-black text-[#1e1640] text-sm">ترخيص غير محدود (Host + Client)</h4>
+                  <p className="text-xs text-[#6b5f8a] font-medium">عدد لا نهائي من الطلاب، الأفواج، الأساتذة، والعمليات المالية مع ربط محطتين في نفس الوقت.</p>
                 </div>
               </div>
               
               <div className="flex items-start gap-4 border-b border-[#ede9fe] pb-4 text-right">
                 <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-primary-600 shrink-0">
-                  <Server size={20} />
+                  <Radio size={20} />
                 </div>
                 <div>
-                  <h4 className="font-black text-[#1e1640] text-sm">ربط الخادم ومحطات الاستقبال (LAN)</h4>
-                  <p className="text-xs text-[#6b5f8a] font-medium">تشغيل محطة الاستقبال وجهاز الإدارة معاً في نفس الوقت ومزامنة حية.</p>
+                  <h4 className="font-black text-[#1e1640] text-sm">ربط شبكي تلقائي ذكي (LAN Auto-Discovery)</h4>
+                  <p className="text-xs text-[#6b5f8a] font-medium">تشغيل محطة الاستقبال وجهاز الإدارة معاً في نفس الوقت ومزامنة حية دون إدخال IP يدوياً.</p>
                 </div>
               </div>
 
@@ -826,23 +952,30 @@ export default function Home() {
                   <Shield size={20} />
                 </div>
                 <div>
-                  <h4 className="font-black text-[#1e1640] text-sm">ضمان ودعم فني مستمر</h4>
-                  <p className="text-xs text-[#6b5f8a] font-medium">مساعدة في التثبيت وإعداد المركز، نسخ احتياطي دوري، واستجابة لأي استفسار.</p>
+                  <h4 className="font-black text-[#1e1640] text-sm">ضمان دائم وإعادة تفعيل مجانية</h4>
+                  <p className="text-xs text-[#6b5f8a] font-medium">ضمان إعادة تفعيل نسختكم مجاناً عند استبدال القرص الصلب أو فورمات الحاسوب، مع دعم فني مستمر.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-[#ede9fe] text-center">
-            <p className="text-xs font-bold text-slate-500">
-              📞 للتواصل المباشر والاستفسارات الهاتفية: <span className="font-black text-primary-700 dir-ltr inline-block">0550 00 00 00</span>
+          <div className="mt-8 pt-6 border-t border-[#ede9fe] text-center space-y-2">
+            <p className="text-xs font-bold text-slate-600 flex items-center justify-center gap-2">
+              <Phone size={14} className="text-primary-600" />
+              <span>للتواصل المباشر والاستفسارات الهاتفية:</span>
+              <a href={`tel:${phoneInternational}`} className="font-black text-primary-700 dir-ltr inline-block hover:underline">{phoneNumber}</a>
+            </p>
+            <p className="text-xs font-bold text-slate-500 flex items-center justify-center gap-2">
+              <Send size={13} className="text-blue-500" />
+              <span>حساب التيليجرام المباشر:</span>
+              <a href={telegramUrl} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-600 hover:underline">@Fluidev</a>
             </p>
           </div>
         </div>
       </section>
 
       {/* 12. Expanded FAQ Section */}
-      <section id="faq" className="w-full max-w-4xl mt-12 mb-24">
+      <section id="faq" className="w-full max-w-4xl mt-12 mb-24 scroll-mt-28">
         <h2 className="text-3xl md:text-4xl font-black text-[#1e1640] mb-8 text-center">الأسئلة الشائعة لمدراء المدارس</h2>
         
         <div className="space-y-4">
@@ -859,10 +992,10 @@ export default function Home() {
           <div className="clay p-6 text-right">
             <h4 className="font-black text-[#1e1640] flex items-center gap-2.5 mb-2 text-base">
               <span className="w-2.5 h-2.5 rounded-full bg-primary-600 shrink-0"></span>
-              هل يمكن تشغيل البرنامج على حاسوبين (المدير + موظف الاستقبال)؟
+              هل يمكن تشغيل البرنامج على حاسوبين (المدير + موظف الاستقبال) وكيف يتم الربط؟
             </h4>
             <p className="text-[#6b5f8a] font-medium text-sm pr-5 leading-relaxed">
-              بالتأكيد! يدعم النظام معمارية الشبكة المحلية (LAN Multi-Terminal)؛ حيث يعمل جهاز المدير كخادم رئيسي (Host)، بينما يرتبط جهاز الاستقبال به عبر شبكة الواي فاي أو كابل الشبكة المحلي، وتتم مزامنة البيانات بشكل لحظي.
+              نعم وبكل سهولة! يدعم النظام معمارية الشبكة المحلية المتقدمة مع ميزة الاكتشاف التلقائي (LAN Auto-Discovery)؛ حيث يعمل جهاز المدير كخادم رئيسي (Host)، بينما يرتبط جهاز الاستقبال تلقائياً دون الحاجة لمعرفة أو إدخال عنوان IP يدوياً، وتتم مزامنة البيانات بشكل لحظي.
             </p>
           </div>
 
@@ -882,7 +1015,7 @@ export default function Home() {
               كيف يتم حساب أجور الأساتذة وهل يدعم الحسابات البريدية CCP؟
             </h4>
             <p className="text-[#6b5f8a] font-medium text-sm pr-5 leading-relaxed">
-              يتيح لك البرنامج ضبط صيغة تعاقد كل أستاذ بدقة (سواء بنسبة مئوية من إجمالي مداخيل تلاميذه كـ 50% أو 60%، أو براتب شهري ثابت)، مع توثيق رقم حسابه البريدي الجاري CCP ومفتاحه Clé ورقم RIP، مع إمكانية دفع رواتب الأساتذة المحددين دفعة واحدة وتصفير مستحقاتهم تلقائياً.
+              يتيح لك البرنامج ضبط صيغة تعاقد كل أستاذ بدقة (سواء بنسبة مئوية من إجمالي مداخيل تلاميذه كـ 50% أو 60%، أو براتب شهري ثابت)، مع توثيق رقم حسابه البريدي الجاري CCP ومفتاحه Clé ورقم RIP، مع إمكانية دفع رواتب الأساتذة المحددين دفعة واحدة وتصفير مستحقاتهم تلقائياً واستخراج ملف الحوالات الرسمي لبريد الجزائر.
             </p>
           </div>
 
@@ -892,7 +1025,17 @@ export default function Home() {
               ماذا يحدث لبياناتي في حال تعطل جهاز الحاسوب؟
             </h4>
             <p className="text-[#6b5f8a] font-medium text-sm pr-5 leading-relaxed">
-              تحتوي المنظومة على وحدة نسخ احتياطي مدمجة وسهلة الاستخدام؛ يمكنك بنقرة واحدة استخراج نسخة احتياطية مضغوطة (.zip) لكافة بيانات المركز وحفظها على فلاش ديسك خارجي (USB) أو تخزين سحابي، واسترجاعها في أي حاسوب جديد خلال ثوانٍ.
+              تحتوي المنظومة على محرك نسخ احتياطي آمن وسريع يعتمد تقنية VACUUM INTO؛ يمكنك بنقرة واحدة أخذ نسخة احتياطية كاملة لقاعدة بيانات المركز وحفظها على فلاش ديسك خارجي USB، كما تقوم المنظومة بنسخ آلي عند الإقلاع أو الإغلاق، ويمكن استرجاع بياناتك على أي حاسوب بديل في ثوانٍ معدودة دون فقدان أي سجل.
+            </p>
+          </div>
+
+          <div className="clay p-6 text-right">
+            <h4 className="font-black text-[#1e1640] flex items-center gap-2.5 mb-2 text-base">
+              <span className="w-2.5 h-2.5 rounded-full bg-primary-600 shrink-0"></span>
+              هل تضمن المنظومة خصوصية بيانات الطلاب وتوافقها مع القانون الجزائري 18-07؟
+            </h4>
+            <p className="text-[#6b5f8a] font-medium text-sm pr-5 leading-relaxed">
+              نعم تماماً! المنظومة تعمل بنظام محلي مغلق (On-Premise) وقاعدة بيانات SQLite داخل جهازك، ولا يتم نقل أو رفع أي سجلات أو أرقام هواتف لأي خادم سحابي خارجي، مما يجعل مركزك ممتثلاً 100% لمتطلبات القانون 18-07 المتعلق بحماية المعطيات ذات الطابع الشخصي (ANPDP).
             </p>
           </div>
         </div>
@@ -902,18 +1045,17 @@ export default function Home() {
       <footer className="w-full mt-auto py-10 text-center border-t-2 border-[#ede9fe] text-[#6b5f8a] font-medium">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-[#1e1640] font-black text-lg">
-            <div className="w-8 h-8 rounded-xl bg-primary-100 text-primary-600 flex items-center justify-center">
-              <LayoutDashboard size={18} />
-            </div>
+            <img src="/logo.png" alt="شعار منظومة المدرسة" className="w-8 h-8 rounded-xl object-contain bg-white p-0.5 border border-purple-100" />
             <span>منصة المدرسة (Al Madrasa ERP)</span>
           </div>
 
           <p className="text-xs">
-            جميع الحقوق محفوظة © {new Date().getFullYear()} — الحل المتكامل لمدارس الدعم والمراكز القرآنية في الجزائر
+            جميع الحقوق محفوظة © {new Date().getFullYear()} — تواصل مباشر: <a href={`tel:${phoneInternational}`} className="font-bold text-primary-700">{phoneNumber}</a> | تيليجرام: <a href={telegramUrl} className="font-bold text-blue-600">@Fluidev</a>
           </p>
 
           <div className="flex items-center gap-4 text-xs font-bold text-primary-600">
             <a href="#features" className="hover:underline">المميزات</a>
+            <a href="#network" className="hover:underline">الربط الشبكي</a>
             <a href="#pricing" className="hover:underline">الأسعار</a>
             <a href="#faq" className="hover:underline">الأسئلة الشائعة</a>
           </div>

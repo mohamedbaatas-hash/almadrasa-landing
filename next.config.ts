@@ -2,10 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/almadrasa-landing",
   images: {
     unoptimized: true,
   },
+  basePath: "/almadrasa-landing",
 };
 
 export default nextConfig;
